@@ -7,9 +7,35 @@ if ('serviceWorker' in navigator) {
 }
 
 
+const beleegyezett = document.querySelector(
+  'input[name="studiouzenet"][value="igen"]'
+).checked;
 
 
+const szulDatum = document.getElementById("szuletesi").value; // "YYYY-MM-DD"
+const [ev, honap, nap] = szulDatum.split("-"); // ["2000","12","25"]
 
+
+function sendToGoogle() {
+
+  fetch("https://docs.google.com/forms/d/e/1FAIpQLSeXhMhTqhyH8-gbGWo_i87c7pmklf4FfVtAFm3dcBvpbRcQRg/viewform?usp=headerRespone", {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: new URLSearchParams({
+      "entry.2036885871": document.getElementById("nev").value,
+      "entry.1314725415": document.getElementById("email").value,
+      "entry.177461580": ev,      // év
+      "entry.177461580": honap,   // hónap
+      "entry.177461580": nap,     // nap
+      "entry.1181453253": "Igen"
+    })
+
+  });
+
+}
 
 
 
@@ -100,6 +126,17 @@ if ('serviceWorker' in navigator) {
   }
 
   saveBtn.addEventListener('click', async ()=>{
+
+
+    const beleegyezett = document.querySelector(
+        'input[name="studiouzenet"][value="igen"]'
+      ).checked;
+
+      if (beleegyezett) {
+        sendToGoogle();
+      }
+
+
     // ellenőrizzük a "beleegyez" (az eredeti papíron vannak kötelezők - itt legalább aláírás)
     const name = document.getElementById('nev').value.trim();
     const date = document.getElementById('datum').value;
