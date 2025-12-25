@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Pinker Tattoo — Beleegyező nyilatkozat</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
+
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap" id="paper">
+  <div class="header">
+    <div class="logo">
+      <!-- ha van logótok, beteszed ide src-ként -->
+      <img src="icon.png" alt="logo" id="logoImg" />
+      <div>
+        
+        <div class="title">Pinker Tattoo</div>
+        <div class="title-small">BELEEGYEZŐ NYILATKOZAT TESZT!!!!!!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <!-- BAL: űrlap -->
+    <div class="left" id="leftColumn">
+      <div class="section-title">Személyes adatok</div>
+
+      <label class="field">Név:
+        <input type="text" id="nev" placeholder="Név">
+      </label>
+
+      <label class="field">Születési dátum:
+        <input type="date" id="szuletesi">
+      </label>
+
+      <label class="field">Lakcím:
+        <input type="text" id="lakcim" placeholder="Lakcím">
+      </label>
+
+      <label class="field">Telefonszám:
+        <input type="text" id="telefon" placeholder="Telefonszám">
+      </label>
+
+      <label class="field">E-mail:
+        <input type="email" id="email" placeholder="E-mail">
+      </label>
+
+      <label class="field">Foglalkozás:
+        <input type="text" id="foglalkozas" placeholder="Foglalkozás">
+      </label>
+
+      <div style="height:10px"></div>
+
+      <!-- kérdések radio Igen / Nem -->
+      <div class="question">
+        <div class="q-left">Szenvedsz valamilyen betegségtől vagy allergiától?</div>
+        <div class="radios">
+          <label><input type="radio" name="beteg" value="igen">Igen</label>
+          <label><input type="radio" name="beteg" value="nem" checked>Nem</label>
+        </div>
+      </div>
+
+      <label class="field">Ha igen, milyenben? (írja le)
+        <textarea id="betegseg_desc" placeholder="Rövid leírás"></textarea>
+      </label>
+
+      <div class="question">
+        <div class="q-left">Vettél be valamilyen gyógyszert az elmúlt 24 órában?</div>
+        <div class="radios">
+          <label><input type="radio" name="gyogyszer" value="igen">Igen</label>
+          <label><input type="radio" name="gyogyszer" value="nem" checked>Nem</label>
+        </div>
+      </div>
+
+      <label class="field">Ha igen, milyet?
+        <input type="text" id="gyogyszer_desc">
+      </label>
+
+      <div class="question">
+        <div class="q-left">Fogyasztottál alkoholt az elmúlt 24 órában?</div>
+        <div class="radios">
+          <label><input type="radio" name="alkohol" value="igen">Igen</label>
+          <label><input type="radio" name="alkohol" value="nem" checked>Nem</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-left">Beleegyezem fotók és videók elkészítésébe, amik megjelenhetnek a social media platformokon</div>
+        <div class="radios">
+          <label><input type="radio" name="foto" value="igen">Igen</label>
+          <label><input type="radio" name="foto" value="nem" checked>Nem</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-left">Beleegyezem, hogy a stúdió az adataimat felhasználva hírekről, ajánlatokról értesítsen</div>
+        <div class="radios">
+          <label><input type="radio" name="studiouzenet" value="igen">Igen</label>
+          <label><input type="radio" name="studiouzenet" value="nem" checked>Nem</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-left">Elfogadom, hogy a tetoválásra a tetováló garanciát vállal, amennyiben az általa javasolt termékekkel/utóápolókkal, és az általa javasolt módon kezelem</div>
+        <div class="radios">
+          <label><input type="radio" name="garancia" value="igen">Igen</label>
+          <label><input type="radio" name="garancia" value="nem" checked>Nem</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="q-left">A megfelelő információkat megkaptam, a tetoválás árát annak elkészülése után a helyszínen kifizetem</div>
+        <div class="radios">
+          <label><input type="radio" name="fizetes" value="igen">Igen</label>
+          <label><input type="radio" name="fizetes" value="nem" checked>Nem</label>
+        </div>
+      </div>
+
+      <div style="margin-top:12px">
+        <label class="field">Dátum:
+          <input type="date" id="datum">
+        </label>
+      </div>
+
+
+
+      <hr style="margin:18px 0;border:none;border-top:1px solid #eee">
+
+      <!-- extra checkboxok a kérésed szerint -->
+      <div class="consent-row">
+        <label style="font-size:14px"><input type="checkbox" id="adatok_tarolasa"> Beleegyezek az adataim tárolásába és felhasználásába</label>
+      </div>
+
+
+
+      <!-- aláírás canvas -->
+      <div style="margin-top:14px">
+        <div style="font-weight:700;margin-bottom:8px">Aláírás:</div>
+        <div class="sig-wrap">
+          <canvas id="sigCanvas"></canvas>
+        </div>
+
+        <div class="tattosigno">
+            <h3>Tetováló aláírása:</h3>
+            <img src="signo.png" alt="">
+        </div>
+        <div class="sig-buttons" style="margin-top:8px">
+          <button type="button" id="clearSig" class="secondary">Aláírás törlése</button>
+          <button type="button" id="saveBtn" class="save-btn">Mentés</button>
+        </div>
+      </div>
+
+    </div> <!-- /left -->
+
+    <!-- JOBB: tájékoztató szöveg, szóról szóra -->
+    <div class="right" id="rightColumn">
+      <h3>Tájékoztató a Foglalóról</h3>
+      <p class="small">
+        A lefoglalt időponthoz FOGLALÓ FIZETÉSE KÖTELEZŐ, amely a tetoválás teljes árába beszámít.<br><br>
+
+        A FOGLALÓ ÖSSZEGE SEMMILYEN KÖRÜLMÉNY KÖZÖTT NEM KERÜL VISSZAFIZETÉSRE.<br><br>
+
+        EGYSZER VAN LEHETŐSÉG az időpont módosítására, ha a vendég azt legalább 48 ÓRÁVAL A MEGBESZÉLT IDŐELŐTT jelzi.<br><br>
+
+        EGYETLEN ESETBEN tudjuk visszaadni a foglalót: ha 24 ÓRÁN BELÜL lemondásról a vendég ORVOSI IGAZOLÁST hoz, amely igazolja, hogy az adott napon nem tudott megjelenni. Ebben az esetben az időpontot áthelyezhetjük egy másik alkalomra.
+      </p>
+
+      <h3>Lehetséges komplikációk</h3>
+      <p class="small">
+       <strong>Még a tetoválás megfelelő elkészítése során is felléphetnek a következők, nem kívánt mellékhatások:</strong> Gyulladás, Fájdalom, Keringési zavarok, Allergia, Sebgyógyulási zavarok, Keloid/Tályog/Hegképződés, Vérömleny, Vérzés, Tartós hegesedés, Fertőzések, Szövetelhalás, Érsérülés, Idegkárosodás, Ideiglenes halláskárosodás, Tartós hallákimaradás, Kilikődés, Trombózis, Embólia, Neurológiai veszteség.
+      </p>
+
+      <h3>Felvilágosítás</h3>
+      <p class="small">
+        <strong>A tetoválás egy életre szól.</strong> Jelenleg nincs semmilyen ismert eljárás, ami garantálná a tetoválás nyomtalan eltávolítását. Az egészségügyi kockázatok nem egészében ismertek.<br><br>
+
+        <strong>A tetoválások hátrányokhoz vezethetnek.</strong> A tetoválások igen népszerűek, ennek ellenére nem mindenhol látják őket szívesen. Különösképpen érvényes ez bizonyos foglalkozások esetében.
+      </p>
+
+      
+      <p class="small">
+        <strong>Sablon és eredmény</strong> <br>A kész tetoválások mindig máshogy néznek ki egy rajzon, például papíron. Az eltérő bőrtípusok és színek egyaránt okozhatnak eltéréseket. Ráadásul a tetováló kénytelen a motívumot formában nagyságban és színben a testhez igazítani. A tényleges végeredményt soha nem lehet előre szimulálni.
+      </p>
+    </div> <!-- /right -->
+  </div> <!-- /content -->
+
+</div> <!-- /wrap -->
+
+<!-- Köszönő modal -->
+<div id="modal" class="modal"><div class="card"><h3>Köszönjük!</h3><p>A nyilatkozat mentése sikeres.</p><button id="modalClose">OK</button></div></div>
+
+<!-- JS könyvtárak: html2canvas + jsPDF (CDN) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- JS: működés (aláírás + PDF mentés + reset + modal) -->
+    <script src="script.js"></script>
+</body>
+</html>
