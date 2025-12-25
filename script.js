@@ -18,7 +18,7 @@ const [ev, honap, nap] = szulDatum.split("-"); // ["2000","12","25"]
 
 function sendToGoogle() {
 
-  fetch("https://docs.google.com/forms/d/e/1FAIpQLSeXhMhTqhyH8-gbGWo_i87c7pmklf4FfVtAFm3dcBvpbRcQRg/viewform?usp=headerRespone", {
+  fetch("https://docs.google.com/forms/d/e/1FAIpQLSeXhMhTqhyH8-gbGWo_i87c7pmklf4FfVtAFm3dcBvpbRcQRg/viewform?usp=header", {
     method: "POST",
     mode: "no-cors",
     headers: {
