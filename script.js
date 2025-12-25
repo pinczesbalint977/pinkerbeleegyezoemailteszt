@@ -12,13 +12,11 @@ const beleegyezett = document.querySelector(
 ).checked;
 
 
-const szulDatum = document.getElementById("szuletesi").value; // "YYYY-MM-DD"
-const [ev, honap, nap] = szulDatum.split("-"); // ["2000","12","25"]
 
 
 function sendToGoogle() {
 
-  fetch("https://docs.google.com/forms/d/e/1FAIpQLSeXhMhTqhyH8-gbGWo_i87c7pmklf4FfVtAFm3dcBvpbRcQRg/viewform?usp=header", {
+  fetch("https://docs.google.com/forms/d/e/1FAIpQLSeXhMhTqhyH8-gbGWo_i87c7pmklf4FfVtAFm3dcBvpbRcQRg/viewform?usp=headerRespone", {
     method: "POST",
     mode: "no-cors",
     headers: {
@@ -27,9 +25,7 @@ function sendToGoogle() {
     body: new URLSearchParams({
       "entry.2036885871": document.getElementById("nev").value,
       "entry.1314725415": document.getElementById("email").value,
-      "entry.177461580": ev,      // év
-      "entry.177461580": honap,   // hónap
-      "entry.177461580": nap,     // nap
+      "entry.177461580": document.getElementById("szuletesi").value,
       "entry.1181453253": "Igen"
     })
 
