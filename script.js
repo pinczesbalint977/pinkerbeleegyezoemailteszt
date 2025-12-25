@@ -13,8 +13,9 @@ const beleegyezett = document.querySelector(
 
 
 
-
 function sendToGoogle() {
+  const szulDatum = document.getElementById("szuletesi").value; // YYYY-MM-DD
+  const [ev, honap, nap] = szulDatum.split("-");
 
   fetch("https://docs.google.com/forms/d/e/1FAIpQLSeXhMhTqhyH8-gbGWo_i87c7pmklf4FfVtAFm3dcBvpbRcQRg/viewform?usp=headerRespone", {
     method: "POST",
@@ -25,12 +26,14 @@ function sendToGoogle() {
     body: new URLSearchParams({
       "entry.2036885871": document.getElementById("nev").value,
       "entry.1314725415": document.getElementById("email").value,
-      "entry.177461580": document.getElementById("szuletesi").value,
+      "entry.177461580_year": ev,
+      "entry.177461580_month": honap,
+      "entry.177461580_day": nap,
       "entry.1181453253": "Igen"
     })
-
   });
 
+  alert("Adatok elküldve!");
 }
 
 
